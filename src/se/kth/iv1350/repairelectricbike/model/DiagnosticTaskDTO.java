@@ -1,4 +1,4 @@
-package IV1350_ObjectOrientedDesign.src.se.kth.iv1350.repairelectricbike.model;
+package se.kth.iv1350.repairelectricbike.model;
 
 public class DiagnosticTaskDTO {
 

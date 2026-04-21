@@ -1,4 +1,4 @@
-package IV1350_ObjectOrientedDesign.src.view;
+package se.kth.iv1350.repairelectricbike.view;
 
 public class View {
 

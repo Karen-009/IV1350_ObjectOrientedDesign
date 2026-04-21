@@ -1,4 +1,4 @@
-package IV1350_ObjectOrientedDesign.src.se.kth.iv1350.repairelectricbike.integration;
+package se.kth.iv1350.repairelectricbike.integration;
 
 public class RegistryCreator {
 
