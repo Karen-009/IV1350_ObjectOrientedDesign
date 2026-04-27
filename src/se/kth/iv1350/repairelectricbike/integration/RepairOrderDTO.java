@@ -1,7 +1,7 @@
 package se.kth.iv1350.repairelectricbike.integration;
 
-import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
-import se.kth.iv1350.repairelectricbike.model.Amount;
+//import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
+//import se.kth.iv1350.repairelectricbike.model.Amount;
 
 /**
  * Contains all information about a repair order. This is an immutable data
