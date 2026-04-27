@@ -1,7 +1,7 @@
 package se.kth.iv1350.repairelectricbike.controller;
 
-import se.kth.iv1350.repairelectricbike.model.RepairOrder;
-import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
+import se.kth.iv1350.repairelectricbike.model.*;
+import se.kth.iv1350.repairelectricbike.integration.*;
 
 public class Controller {
     /**
