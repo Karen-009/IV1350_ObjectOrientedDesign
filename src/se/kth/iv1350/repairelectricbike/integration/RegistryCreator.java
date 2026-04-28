@@ -5,18 +5,17 @@ package se.kth.iv1350.repairelectricbike.integration;
  */
 
 public class RegistryCreator {
-    private CustomerRegistery customerRegistery = new CustomerRegistery();
+    private CustomerRegistry customerRegistery = new CustomerRegistry();
+    private RepairOrderRegistry repairOrderRegistry = new RepairOrderRegistry();
 
     /**
      * Get the value of customerRegistry
      * 
      * @return the value of customerRegistry
      */
-    public CustomerRegistery getCustomerRegistry() {
+    public CustomerRegistry getCustomerRegistry() {
         return customerRegistery;
     }
-
-    private RepairOrderRegistry repairOrderRegistry = new RepairOrderRegistry();
 
     /**
      * Get the value of repairOrderRegistry
