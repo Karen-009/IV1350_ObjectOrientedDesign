@@ -60,7 +60,7 @@ public class Controller {
      *         found.
      */
     public CustomerDTO findCustomer(String phoneNumber) {
-        return CustomerRegistry.findCustomer(phoneNumber);
+        return customerRegistry.findCustomer(phoneNumber);
     }
 
     /**
