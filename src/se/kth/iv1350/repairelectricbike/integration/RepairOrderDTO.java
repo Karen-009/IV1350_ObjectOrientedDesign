@@ -1,15 +1,11 @@
 package se.kth.iv1350.repairelectricbike.integration;
 
-//import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
-//import se.kth.iv1350.repairelectricbike.model.Amount;
-
 /**
  * Contains all information about a repair order. This is an immutable data
  * transfer object.
  */
 public final class RepairOrderDTO {
     private final String id;
-    private final String phoneNumber;
     private final String date;
     private final String customersProblemDescription;
     private final String estimatedCompletionDate;
@@ -19,17 +15,15 @@ public final class RepairOrderDTO {
      * Creates a new instance.
      * 
      * @param id                          The repair order ID.
-     * @param phoneNumber                 The customers phone number.
      * @param date                        The date the order was created.
      * @param customersProblemDescription Description provided by customer.
      * @param estimatedCompletionDate     Expected finish date.
      * @param state                       The current status of the repair.
      */
 
-    public RepairOrderDTO(String id, String phoneNumber, String date, String customersProblemDescription,
+    public RepairOrderDTO(String id, String date, String customersProblemDescription,
             String estimatedCompletionDate, RepairOrderState state) {
         this.id = id;
-        this.phoneNumber = phoneNumber;
         this.date = date;
         this.customersProblemDescription = customersProblemDescription;
         this.estimatedCompletionDate = estimatedCompletionDate;
@@ -44,21 +38,21 @@ public final class RepairOrderDTO {
     }
 
     /**
-     * @return The customer's phone number.
+     * @return The current state of the repair order.
      */
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
+    public RepairOrderState getState() {
+        return state;
+    }  
+    
     /**
-     * @return The date the order was created.
+     * @return The date the repair order was created.
      */
     public String getDate() {
         return date;
     }
 
     /**
-     * @return The description of the customers problem.
+     * @return The customer's problem description.
      */
     public String getCustomersProblemDescription() {
         return customersProblemDescription;
@@ -72,10 +66,16 @@ public final class RepairOrderDTO {
     }
 
     /**
-     * @return The current status of the repair.
+     * Returns a string representation of this repair order DTO.
+     * The returned string contains selected repair order information,
+     * including the ID, current state, and customer's problem description.
+     *
+     * @return A string describing this repair order DTO.
      */
-
-    public RepairOrderState getState() {
-        return state;
-    }  
+    @Override
+    public String toString() {
+        return "RepairOrder[id=" + id
+               + ", state=" + state
+               + ", problem=" + customersProblemDescription + "]";
+    }
 }
