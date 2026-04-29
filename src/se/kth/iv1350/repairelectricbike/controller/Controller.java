@@ -73,7 +73,6 @@ public class Controller {
      */
 
     public void acceptRepairOrder(String repairOrderID) {
-        repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
         repairOrder.acceptRepairOrder(repairOrderRegistry);
         printer.printRepairOrder(repairOrder.getRepairOrderDTO());
     }
