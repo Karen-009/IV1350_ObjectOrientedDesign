@@ -21,7 +21,7 @@ public class RepairOrderRegistry {
      * Searches for a repair order by phone number.
      * * @param phoneNumber The unique identifier for the search.
      * 
-     * @return The found order as a DTO, or null if no match exists.
+     * * @return The found order as a DTO, or null if no match exists.
      */
     public RepairOrderDTO findRepairOrder(String phoneNumber) {
         for (RepairOrder order : repairOrders) {
@@ -51,10 +51,26 @@ public class RepairOrderRegistry {
     /**
      * Finds and retrieves all the repaird orders in the system.
      * 
-     * @return A list of DTOs that represent every repair order in the system.
+     * * @return A list of DTOs that represent every repair order in the system.
      */
     public List<RepairOrderDTO> findAllRepairOrders() {
         List<RepairOrderDTO> dtos = new ArrayList<>();
+        for (RepairOrder order : repairOrders) {
+            dtos.add(order.toDTO());
+        }
+        return dtos;
+    }
 
+    /**
+     * Updates an existing repair order in the registary.
+     * 
+     * * @param updatedRepairOrder The DTO containing the updated information.
+     */
+    public void updateRepairOrder(RepairOrderDTO updaterepairOrder) {
+        for (int i = 0; i < repairOrders.size(); i++) {
+            if (repairOrders.get(i).getId().equals(updatedrepairOrder.getId())) {
+                return;
+            }
+        }
     }
 }
