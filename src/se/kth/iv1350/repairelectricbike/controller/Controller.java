@@ -52,7 +52,7 @@ public class Controller {
      */
 
     public void acceptRepairOrder(String repairOrderID) {
-        RepairOrder repairOrder = repairOrderIDRegistry.getRepairOrder(repairOrderID);
+        RepairOrder repairOrder = repairOrderRegistry.getRepairOrder(repairOrderID);
         repairOrder.acceptRepairOrder();
 
         repairOrderRegistry.updateRepairOrder(repairOrder);

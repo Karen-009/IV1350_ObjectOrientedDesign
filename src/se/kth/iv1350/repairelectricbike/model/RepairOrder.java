@@ -1,28 +1,21 @@
 package se.kth.iv1350.repairelectricbike.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDateTime;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
+import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
 
 /**
- * Requests a specific repair order.
+ * Handles all calls to the data storage for repair orders.
  */
 public class RepairOrder {
+    private String phoneNumber;
+    private String id;
+    private String date;
+    private String customersProblemDescription;
+    private String estimatedCompletionDate;
     private RepairOrderState state;
 
-    /**
-     * Changes the repair order to "Accepted".
-     */
-    public void acceptRepairOrder() {
-        this.state = RepairOrderState.Accepted;
-    }
-
-    /**
-     * Creates a DTO containing the current state of this order.
-     * 
-     * @return A snapshot of the order data.
-     */
-    public RepairOrderDTO toDTO() {
-        return new RepairOrderDTO(this.id, this.date, this.customersProblemDescription, this.estimatedCompletionDate,
-                this.state);
-    }
 }
