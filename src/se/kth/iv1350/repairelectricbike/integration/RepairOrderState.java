@@ -7,30 +7,30 @@ public enum RepairOrderState {
     /**
      * The order has been created but not yet reviewed.
      */
-    NewlyCreated,
+    NEWLY_CREATED,
 
     /**
      * The diagnostics are finished and awaiting customer approval.
      */
-    ReadyForApproval,
+    READY_FOR_APPROVAL,
 
     /**
      * The customer has rejected the repair.
      */
-    Rejected,
+    REJECTED,
 
     /**
      * The customer has accepted the repair.
      */
-    Accepted,
+    ACCEPTED,
 
     /**
      * The physical repair work is finished.
      */
-    Completed,
+    COMPLETED,
 
     /**
      * The customer has paid for the repair.
      */
-    Payed
+    PAYED
 }

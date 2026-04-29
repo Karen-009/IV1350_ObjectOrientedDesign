@@ -10,8 +10,10 @@ import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
 import se.kth.iv1350.repairelectricbike.integration.Printer;
 import se.kth.iv1350.repairelectricbike.integration.RegistryCreator;
 import se.kth.iv1350.repairelectricbike.integration.CustomerDTO;
+
 /**
- * This is the application's only controller class. All calls to the model pass through here.
+ * This is the application's only controller class. All calls to the model pass
+ * through here.
  */
 
 public class Controller {
@@ -23,10 +25,10 @@ public class Controller {
     /**
      * Creates a new instance.
      * 
-     * @param creator   Used to get all classes that handle database calls.
-     * @param printer   Interface to printer.
+     * @param creator Used to get all classes that handle database calls.
+     * @param printer Interface to printer.
      */
-    public Controller(RegistryCreator creator, Printer printer){
+    public Controller(RegistryCreator creator, Printer printer) {
         this.customerRegistry = creator.getCustomerRegistry();
         this.repairOrderRegistry = creator.getRepairOrderRegistry();
         this.printer = printer;
@@ -42,8 +44,6 @@ public class Controller {
     public CustomerDTO findCustomer(String phoneNumber) {
         return CustomerRegistry.findCustomer(phoneNumber);
     }
-
-    
 
     /**
      * Accepts a specific repair order.
