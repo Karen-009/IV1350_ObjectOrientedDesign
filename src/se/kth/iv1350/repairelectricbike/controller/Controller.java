@@ -1,10 +1,11 @@
 package se.kth.iv1350.repairelectricbike.controller;
 
-import se.kth.iv1350.repairelectricbike.model.RepairOrder;
+import java.util.List;
 
-import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
+import se.kth.iv1350.repairelectricbike.model.RepairOrder;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.Bike;
+import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 import se.kth.iv1350.repairelectricbike.integration.CustomerRegistry;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
 import se.kth.iv1350.repairelectricbike.integration.Printer;
@@ -47,6 +48,10 @@ public class Controller {
 
     public RepairOrderDTO findRepairOrder(String phoneNumber){
         return repairOrderRegistry.findRepairOrder(phoneNumber);
+    }
+
+    public List<RepairOrderDTO> findAllRepairOrders() {
+        return repairOrderRegistry.findAllRepairOrders();
     }
 
     /**
