@@ -26,7 +26,7 @@ public class RepairOrderRegistry {
      */
     public RepairOrderDTO findRepairOrder(String phoneNumber) {
         for (RepairOrder order : repairOrders) {
-            if (order.getPhoneNumer().equals(phoneNumber)) {
+            if (order.getPhoneNumber().equals(phoneNumber)) {
                 return order.toDTO();
             }
         }
@@ -67,10 +67,10 @@ public class RepairOrderRegistry {
      * 
      * * @param updatedRepairOrder The DTO containing the updated information.
      */
-    public void updateRepairOrder(RepairOrderDTO updaterepairOrder) {
+    public void updateRepairOrder(RepairOrderDTO updateRepairOrder) {
         for (RepairOrder orders : repairOrders) {
-            if (orders.get().getId().equals(updaterepairOrder.getId())) {
-                orders.updateState(updaterepairOrder);
+            if (orders.getId().equals(updateRepairOrder.getId())) {
+                orders.updateState(updateRepairOrder);
                 return;
             }
         }

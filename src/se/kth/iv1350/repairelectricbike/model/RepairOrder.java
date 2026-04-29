@@ -17,9 +17,21 @@ public class RepairOrder {
     private String customersProblemDescription;
     private String estimatedCompletionDate;
     private RepairOrderState state;
+    private Bike bike;
+
+    private List<DiagnosticTaskDTO> diagnosticResults = new ArrayList<>();
+    private List<RepairTaskDTO> repairTasks = new ArrayList<>();
+
+    public RepairOrder(String problemDesc, String phoneNumber, Bike bike) {
+
+    }
+
+    public RepairOrder(RepairOrderDTO dto) {
+
+    }
 
     /**
-     * Acc epts this repair order. The state is changed to
+     * Accepts this repair order. The state is changed to
      * Accepted and the registry is updated to reflect the new state.
      *
      * @param registry The registry used to persist the
@@ -30,7 +42,7 @@ public class RepairOrder {
         registry.updateRepairOrder(this.getRepairOrderDTO());
     }
 
-        /**
+    /**
      * Rejects this repair order. The state is changed to
      * Rejected and the registry is updated to reflect the new state.
      *
@@ -62,20 +74,12 @@ public class RepairOrder {
      * * @return A read-only snapshot of this repair order.
      */
     public RepairOrderDTO toDTO() {
-        return new RepairOrderDTO(
+        new RepairOrderDTO(
                 this.id,
                 this.phoneNumber,
                 this.date,
                 this.customersProblemDescription,
                 this.estimatedCompletionDate,
                 this.state);
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getId() {
-        return id;
     }
 }

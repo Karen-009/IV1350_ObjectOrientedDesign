@@ -33,4 +33,16 @@ public final class RepairOrderDTO {
         this.state = state;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public RepairOrderState getState() {
+        return state;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
 }

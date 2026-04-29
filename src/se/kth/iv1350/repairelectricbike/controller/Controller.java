@@ -41,8 +41,9 @@ public class Controller {
      * 
      * @param problemDesc   Description of the customer's reported problem.
      * @param customerPhone Phone number of the customer placing the repair order.
-     * @param bikeSerialNo  Bike serial number of the bike associated with the repair order.
-     * @return  A DTO containing information about the created repair order.
+     * @param bikeSerialNo  Bike serial number of the bike associated with the
+     *                      repair order.
+     * @return A DTO containing information about the created repair order.
      */
     public RepairOrderDTO createRepairOrder(String problemDesc, String customerPhone, Bike bikeSerialNo) {
         repairOrder = new RepairOrder(problemDesc, customerPhone, bikeSerialNo);
@@ -54,27 +55,28 @@ public class Controller {
     /**
      * Finds a customer by phone number
      * 
-     * @param phoneNumber   The phone number used to identify the customer.
-     * @return  A DTO containing the customer information, or null if no customer is found.
+     * @param phoneNumber The phone number used to identify the customer.
+     * @return A DTO containing the customer information, or null if no customer is
+     *         found.
      */
     public CustomerDTO findCustomer(String phoneNumber) {
         return CustomerRegistry.findCustomer(phoneNumber);
     }
 
     /**
-     * Finds a repair order connected to a specific customer phone number.    
+     * Finds a repair order connected to a specific customer phone number.
      * 
-     * @param phoneNumber   The phone number associated with the repair order
-     * @return  A DTO containing the matching repair order.
+     * @param phoneNumber The phone number associated with the repair order
+     * @return A DTO containing the matching repair order.
      */
-    public RepairOrderDTO findRepairOrder(String phoneNumber){
+    public RepairOrderDTO findRepairOrder(String phoneNumber) {
         return repairOrderRegistry.findRepairOrder(phoneNumber);
     }
 
     /**
      * Retrieves all repair orders.
      * 
-     * @return  A list containing DTOs for all repair orders.
+     * @return A list containing DTOs for all repair orders.
      */
     public List<RepairOrderDTO> findAllRepairOrders() {
         return repairOrderRegistry.findAllRepairOrders();
@@ -83,8 +85,8 @@ public class Controller {
     /**
      * Adds a diagnostic result to a specific repair order.
      * 
-     * @param repairOrderId The ID of the repair order to update.
-     * @param diagTaskResult    The diagnostic result to add.
+     * @param repairOrderId  The ID of the repair order to update.
+     * @param diagTaskResult The diagnostic result to add.
      */
     public void addDiagnosticResult(String repairOrderId, DiagnosticTaskDTO diagTaskResult) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderId);
@@ -110,17 +112,21 @@ public class Controller {
      */
 
     public void acceptRepairOrder(String repairOrderID) {
-        repairOrder.acceptRepairOrder(repairOrderRegistry);
-        printer.printRepairOrder(repairOrder.getRepairOrderDTO());
+        repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
+        repairOrder.acceptRepairOrder();
+        repairOrderRegistry.updateRepairOrder(repairOrder.toDTO());
+        printer.printRepairOrder(repairOrder.toDTO());
     }
 
-        /**
+    /**
      * Rejects a specific repair order.
      * 
      * @param repairOrderId The ID of the repair order to reject.
      */
 
     public void rejectRepairOrder(String repairOrderID) {
-        repairOrder.rejectRepairOrder(repairOrderRegistry);
+        repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
+        repairOrder.rejectRepairOrder();
+        repairOrderRegistry.updateRepairOrder(repairOrder.toDTO());
     }
 }
