@@ -56,6 +56,13 @@ public class RepairOrder {
     }
 
     /**
+     * @return The bike.
+     */
+    public Bike getBike() {
+        return bike;
+    }
+
+    /**
      * @return The unique repair order ID.
      */
     public String getId() {

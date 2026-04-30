@@ -1,7 +1,7 @@
 package se.kth.iv1350.repairelectricbike.integration;
 
 /**
- * Contains all information about a the customer. This is an immutable data
+ * Contains all information about the customer. This is an immutable data
  * transfer object.
  */
 public final class CustomerDTO {

@@ -48,7 +48,7 @@ public class Controller {
     public RepairOrderDTO createRepairOrder(String problemDesc, String customerPhone, Bike bikeSerialNo) {
         repairOrder = new RepairOrder(problemDesc, customerPhone, bikeSerialNo);
         RepairOrderDTO dto = repairOrder.getRepairOrderDTO();
-        repairOrderRegistry.saveRepairOrder(dto);
+        repairOrderRegistry.saveRepairOrder(repairOrder);
         return dto;
     }
 

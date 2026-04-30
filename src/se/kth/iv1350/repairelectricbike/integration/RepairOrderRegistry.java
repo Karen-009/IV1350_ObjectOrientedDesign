@@ -85,8 +85,7 @@ public class RepairOrderRegistry {
      * 
      * @param repairOrder The repair order to be saved.
      */
-    public void saveRepairOrder(RepairOrderDTO repairOrder) {
-        RepairOrder newOrder = new RepairOrder(repairOrder);
-        repairOrders.add(newOrder);
+    public void saveRepairOrder(RepairOrder repairOrder) {
+        repairOrders.add(repairOrder);
     }
 }
