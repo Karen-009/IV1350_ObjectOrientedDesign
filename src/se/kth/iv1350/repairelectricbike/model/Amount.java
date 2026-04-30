@@ -1,7 +1,7 @@
 package se.kth.iv1350.repairelectricbike.model;
 
 /**
- * Represents an amount of money. Instances are imumtable.
+ * Represents an amount of money. Instances are immutable.
  */
 public final class Amount {
     private final int amount;

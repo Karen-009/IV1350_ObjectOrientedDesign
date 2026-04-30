@@ -28,7 +28,7 @@ public final class CustomerDTO {
         this.email = email;
         this.bikeBrand = bikeBrand;
         this.bikeModel = bikeModel;
-        this.bikeSerialNo = bikeSeriallNo;
+        this.bikeSerialNo = bikeSeriallNo;  
         this.phoneNumber = phoneNumber;
     }
 
