@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.01" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.056" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -55,10 +55,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testInitilizationState" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.002"/>
-  <testcase name="testAddDiagnosticResult" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.001"/>
-  <testcase name="testAcceptRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.0"/>
-  <testcase name="testRejectRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.0"/>
-  <testcase name="testAddRepairTaskU" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.0"/>
-  <testcase name="testUpdateStateFromDTO" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.model.RepairOrderTest" time="0.002"/>
+  <testcase name="testUpdateRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.04"/>
+  <testcase name="testFindAllRepairOrders" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.001"/>
+  <testcase name="testFindRepairOrderMissingId" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.001"/>
+  <testcase name="testFindRepairOrderByPhone" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.001"/>
+  <testcase name="testSaveAndFindById" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.RepairOrderRegistryTest" time="0.001"/>
 </testsuite>

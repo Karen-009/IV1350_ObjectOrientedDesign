@@ -19,11 +19,12 @@ public class RepairOrderRegistry {
     /**
      * Creates a new instance.
      */
-    RepairOrderRegistry() {
+    public RepairOrderRegistry() {
     }
 
     /**
      * Searches for a repair order by phone number.
+     * 
      * @param phoneNumber The unique identifier for the search.
      * 
      * @return The found order as a DTO, or null if no match exists.
@@ -42,7 +43,7 @@ public class RepairOrderRegistry {
      *
      * @param repairOrderId The ID of the repair order to find.
      * @return The repair order with the specified ID,
-     * or null if no such order exists.
+     *         or null if no such order exists.
      */
     public RepairOrder findRepairOrderById(String repairOrderId) {
         for (RepairOrder order : repairOrders) {
