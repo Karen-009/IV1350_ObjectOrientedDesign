@@ -16,15 +16,16 @@ public class CustomerRegistry {
      * Creates a new instance and populates it with
      * hardcoded customer data for testing purposes.
      */
-    CustomerRegistry() {
+    public CustomerRegistry() {
         addCustomers();
     }
 
     /**
      * Finds the customer with the specified phone number.
      * 
-     * @param phoneNumber   The phone number used to identify the customer.
-     * @return  A DTO containing the customer information, or null if no customer is found.
+     * @param phoneNumber The phone number used to identify the customer.
+     * @return A DTO containing the customer information, or null if no customer is
+     *         found.
      */
     public CustomerDTO findCustomer(String phoneNumber) {
         for (CustomerDTO customer : customers) {
@@ -37,20 +38,18 @@ public class CustomerRegistry {
 
     private void addCustomers() {
         customers.add(new CustomerDTO(
-            "Alice Andersson",
-            "alice@email.com",
-            "Trek",
-            "FX3",
-            "SN123456",
-            "0701234567"
-        ));
+                "Alice Andersson",
+                "alice@email.com",
+                "Trek",
+                "FX3",
+                "SN123456",
+                "0701234567"));
         customers.add(new CustomerDTO(
-            "Bob Bengtsson",
-            "bob@email.com",
-            "Giant",
-            "Escape",
-            "SN654321",
-            "0709876543"
-        ));
+                "Bob Bengtsson",
+                "bob@email.com",
+                "Giant",
+                "Escape",
+                "SN654321",
+                "0709876543"));
     }
 }

@@ -3,6 +3,7 @@ package IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.m
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
 
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
@@ -23,6 +24,13 @@ public class RepairOrderTest {
     public void setUp() {
         bike = new Bike("BIKE", "X09", "99");
         repairOrder = new RepairOrder(problemDesc, phone, bike);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        // Methodology: Explicitly set references to null to ensure isolation.
+        bike = null;
+        repairOrder = null;
     }
 
     @Test
@@ -59,7 +67,8 @@ public class RepairOrderTest {
 
     @Test
     public void testAddRepairTaskU() {
-        RepairTaskDTO task = new RepairTaskDTO("Tighten chain", "Adjust chain tension", new Amount(200), RepairTaskState.INCOMPLETE);
+        RepairTaskDTO task = new RepairTaskDTO("Tighten chain", "Adjust chain tension", new Amount(200),
+                RepairTaskState.INCOMPLETE);
         repairOrder.addRepairTask(task);
         assertNotNull(repairOrder.getRepairOrderDTO(), "DTO should still be accessible after adding a task.");
     }

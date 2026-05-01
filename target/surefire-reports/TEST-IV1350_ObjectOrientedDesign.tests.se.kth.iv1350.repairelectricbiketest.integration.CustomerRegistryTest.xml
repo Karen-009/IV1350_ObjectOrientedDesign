@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.041" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.CustomerRegistryTest" time="0.026" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -7,7 +7,6 @@
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="Europe/Stockholm"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="java.vm.specification.version" value="23"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -55,15 +54,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testRejectAcceptRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.028"/>
-  <testcase name="testAddDiagnosticResult" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.001"/>
-  <testcase name="testFindAllRepairOrders" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.001"/>
-  <testcase name="testFindCustomerFoudn" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.0"/>
-  <testcase name="testAcceptRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.0">
-    <system-out><![CDATA[Repair order: d2775de4-6f44-4486-8de2-a69a27732809
-]]></system-out>
-  </testcase>
-  <testcase name="testAddRepairTask" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.001"/>
-  <testcase name="testCreateRepairOrder" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.001"/>
-  <testcase name="testFindCustomerNotFound" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.controller.ControllerTest" time="0.0"/>
+  <testcase name="testFindCustomerExisting" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.CustomerRegistryTest" time="0.013"/>
+  <testcase name="testFindingCustomerNonExisting" classname="IV1350_ObjectOrientedDesign.tests.se.kth.iv1350.repairelectricbiketest.integration.CustomerRegistryTest" time="0.001"/>
 </testsuite>

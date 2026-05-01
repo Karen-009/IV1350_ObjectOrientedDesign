@@ -1,12 +1,8 @@
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/controller/ControllerTest.java
-/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/CustomerDTOTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/CustomerRegistryTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/PrinterTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RegistryCreatorTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderDTOTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderRegistryTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderState.java
-/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/DiagnosticTaskDTOTest.java
 /Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairOrderTest.java
-/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairTaskDTOTest.java
-/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairTaskStateTest.java

@@ -1,12 +1,8 @@
-IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/CustomerDTOTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderRegistryTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/PrinterTest.class
-IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairTaskDTOTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairOrderTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderState.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RepairOrderDTOTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/RegistryCreatorTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/controller/ControllerTest.class
-IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/RepairTaskStateTest.class
-IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/model/DiagnosticTaskDTOTest.class
 IV1350_ObjectOrientedDesign/tests/se/kth/iv1350/repairelectricbiketest/integration/CustomerRegistryTest.class
