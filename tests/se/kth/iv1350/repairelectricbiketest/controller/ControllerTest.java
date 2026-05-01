@@ -86,6 +86,7 @@ public class ControllerTest {
 
         RepairOrderDTO updated = controller.findRepairOrder("070111");
         assertNotNull(updated, "Updated order should exist in registry.");
+        assertEquals(RepairOrderState.READY_FOR_APPROVAL, updated.getState(),"State should be READY_FOR_APPROVAL after adding diagnostic result.");
     }
 
     @Test
