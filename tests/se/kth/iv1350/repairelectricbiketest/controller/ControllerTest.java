@@ -98,7 +98,7 @@ public class ControllerTest {
 
         RepairOrderDTO updated = controller.findRepairOrder("070222");
         assertNotNull(updated, "Order should be retrievable after adding a task.");
-
+        assertEquals(RepairOrderState.NEWLY_CREATED, updated.getState(),"State should remain NEWLY_CREATED after adding a repair task.");
     }
 
     @Test
