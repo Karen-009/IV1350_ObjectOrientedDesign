@@ -28,7 +28,6 @@ public class RepairOrderTest {
 
     @AfterEach
     public void tearDown() {
-        // Methodology: Explicitly set references to null to ensure isolation.
         bike = null;
         repairOrder = null;
     }

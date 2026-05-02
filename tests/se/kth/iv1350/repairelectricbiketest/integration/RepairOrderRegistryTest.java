@@ -67,7 +67,6 @@ public class RepairOrderRegistryTest {
 
     @Test
     public void testUpdateRepairOrder() {
-        // Create a DTO with the same ID but a new state
         RepairOrderDTO updatedDto = new RepairOrderDTO(
                 testRepairOrder.getId(),
                 "2024-01-01",
