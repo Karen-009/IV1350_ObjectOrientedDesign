@@ -1,0 +1,16 @@
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/controller/Controller.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/CustomerDTO.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/CustomerRegistry.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/Printer.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/RegistryCreator.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/RepairOrderDTO.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/RepairOrderRegistry.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/integration/RepairOrderState.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/Amount.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/Bike.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/DiagnosticTaskDTO.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/RepairOrder.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/RepairTaskDTO.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/model/RepairTaskState.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/startup/Main.java
+/Users/karenli009/Draft/IV1350_ObjectOrientedDesign/Seminar_3/src/main/java/se/kth/iv1350/repairelectricbike/view/View.java
