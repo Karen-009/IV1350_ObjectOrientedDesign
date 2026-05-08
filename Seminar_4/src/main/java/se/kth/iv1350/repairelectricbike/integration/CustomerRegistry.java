@@ -10,6 +10,8 @@ import java.util.List;
  */
 
 public class CustomerRegistry {
+
+    private static final String DATABASE_CONNECTION_FAILURE_PHONE_NUMBER = "0700000000";
     private List<CustomerDTO> customers = new ArrayList<>();
 
     /**
@@ -24,16 +26,22 @@ public class CustomerRegistry {
      * Finds the customer with the specified phone number.
      * 
      * @param phoneNumber The phone number used to identify the customer.
-     * @return A DTO containing the customer information, or null if no customer is
-     *         found.
+     * @return A DTO containing the customer information.
+     * @throws CustomerPhoneNumberNotFoundException If no customer is found with the specified phone number.
+     * @throws DatabaseConnectionFailureException If there is a failure in connection to the database.
      */
-    public CustomerDTO findCustomer(String phoneNumber) {
+    public CustomerDTO findCustomer(String phoneNumber) 
+            throws CustomerPhoneNumberNotFoundException, DatabaseConnectionFailureException {
+
+            if (DATABASE_CONNECTION_FAILURE_PHONE_NUMBER.equals(phoneNumber)) {
+                throw new DatabaseConnectionFailureException(phoneNumber);
+            }
         for (CustomerDTO customer : customers) {
             if (customer.getPhoneNumber().equals(phoneNumber)) {
                 return customer;
             }
         }
-        return null;
+        throw new CustomerPhoneNumberNotFoundException(phoneNumber);
     }
 
     private void addCustomers() {
