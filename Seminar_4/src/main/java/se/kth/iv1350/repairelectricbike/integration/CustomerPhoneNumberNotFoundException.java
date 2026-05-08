@@ -1,4 +1,4 @@
-package se.kth.iv1350.repairelectricbike.integration.exception; 
+package se.kth.iv1350.repairelectricbike.integration;
 
 /**
  * Exception when a customer with a specific phone number could not be found. 
