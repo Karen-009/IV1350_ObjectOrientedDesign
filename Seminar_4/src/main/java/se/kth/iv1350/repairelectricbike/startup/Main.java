@@ -1,5 +1,7 @@
 package se.kth.iv1350.repairelectricbike.startup;
 
+import java.io.IOException;
+
 import se.kth.iv1350.repairelectricbike.controller.Controller;
 import se.kth.iv1350.repairelectricbike.view.View;
 import se.kth.iv1350.repairelectricbike.integration.Printer;
@@ -18,9 +20,14 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        RegistryCreator creator = new RegistryCreator();
-        Printer printer = new Printer();
-        Controller contr = new Controller(creator, printer);
-        new View(contr).sampleExecution();
+        try {
+            RegistryCreator creator = new RegistryCreator();
+            Printer printer = new Printer();
+            Controller contr = new Controller(creator, printer);
+            new View(contr).sampleExecution();
+        } catch (IOException exc) {
+            System.out.println("Unable to start the application");
+            exc.printStackTrace();
+        }
     }
 }
