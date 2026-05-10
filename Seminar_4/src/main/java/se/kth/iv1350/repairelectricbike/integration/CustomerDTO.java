@@ -52,10 +52,4 @@ public final class CustomerDTO {
     public String getEmail() {
         return email;
     }
-
-    @Override
-    public String toString() {
-        return "Customer: " + name + ", Phone: " + phoneNumber
-               + ", Bike: " + bikeBrand + " " + bikeModel + " " + bikeSerialNo;
-    }
 }

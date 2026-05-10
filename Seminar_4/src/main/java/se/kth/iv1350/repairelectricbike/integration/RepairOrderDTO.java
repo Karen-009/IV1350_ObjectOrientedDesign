@@ -64,18 +64,4 @@ public final class RepairOrderDTO {
     public String getEstimatedCompletionDate() {
         return estimatedCompletionDate;
     }
-
-    /**
-     * Returns a string representation of this repair order DTO.
-     * The returned string contains selected repair order information,
-     * including the ID, current state, and customer's problem description.
-     *
-     * @return A string describing this repair order DTO.
-     */
-    @Override
-    public String toString() {
-        return "RepairOrder[id=" + id
-               + ", state=" + state
-               + ", problem=" + customersProblemDescription + "]";
-    }
 }
