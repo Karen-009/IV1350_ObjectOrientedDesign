@@ -12,6 +12,7 @@ import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
 import se.kth.iv1350.repairelectricbike.integration.Printer;
 import se.kth.iv1350.repairelectricbike.integration.RegistryCreator;
 import se.kth.iv1350.repairelectricbike.integration.CustomerDTO;
+import se.kth.iv1350.repairelectricbike.integration.CustomerPhoneNumberNotFoundException;
 
 /**
  * This is the application's only controller class. All calls to the model pass
@@ -56,10 +57,10 @@ public class Controller {
      * Finds a customer by phone number.
      * 
      * @param phoneNumber The phone number used to identify the customer.
-     * @return A DTO containing the customer information, or null if no customer is
-     *         found.
+     * @return A DTO containing the customer information.
+     * @throws CustomerNotFoundException If no customer with the given phone number exists.
      */
-    public CustomerDTO findCustomer(String phoneNumber) {
+    public CustomerDTO findCustomer(String phoneNumber) throws CustomerPhoneNumberNotFoundException {
         return customerRegistry.findCustomer(phoneNumber);
     }
 

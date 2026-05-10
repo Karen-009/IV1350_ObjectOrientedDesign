@@ -30,17 +30,19 @@ public class CustomerRegistry {
      * @throws CustomerPhoneNumberNotFoundException If no customer is found with the specified phone number.
      * @throws DatabaseConnectionFailureException If there is a failure in connection to the database.
      */
-    public CustomerDTO findCustomer(String phoneNumber) 
-            throws CustomerPhoneNumberNotFoundException, DatabaseConnectionFailureException {
+    public CustomerDTO findCustomer(String phoneNumber) throws CustomerPhoneNumberNotFoundException {
 
-            if (DATABASE_CONNECTION_FAILURE_PHONE_NUMBER.equals(phoneNumber)) {
-                throw new DatabaseConnectionFailureException(phoneNumber);
-            }
+        if (DATABASE_CONNECTION_FAILURE_PHONE_NUMBER.equals(phoneNumber)) {
+                throw new DatabaseConnectionFailureException("Failed to contact the customer database.", 
+                new Exception("Database connection failure"));
+        }
+
         for (CustomerDTO customer : customers) {
             if (customer.getPhoneNumber().equals(phoneNumber)) {
                 return customer;
             }
         }
+        
         throw new CustomerPhoneNumberNotFoundException(phoneNumber);
     }
 

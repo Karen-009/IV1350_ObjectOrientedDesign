@@ -1,15 +1,18 @@
 package se.kth.iv1350.repairelectricbike.view;
 
+import java.io.IOException;
 import java.util.List;
 
 import se.kth.iv1350.repairelectricbike.controller.Controller;
 import se.kth.iv1350.repairelectricbike.integration.CustomerDTO;
+import se.kth.iv1350.repairelectricbike.integration.CustomerPhoneNumberNotFoundException;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 import se.kth.iv1350.repairelectricbike.model.Amount;
 import se.kth.iv1350.repairelectricbike.model.Bike;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
+import se.kth.iv1350.repairelectricbike.util.LogHandler;
 
 /**
  * This program has no real user interface. Instead, this
@@ -17,14 +20,18 @@ import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
  */
 public class View {
     private Controller contr;
+    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+    private LogHandler logger;
 
     /**
      * Creates a new instance.
      *
      * @param contr The controller used for all operations.
+     * @throws IOException if unable to start logger.
      */
-    public View(Controller contr) {
+    public View(Controller contr) throws IOException {
         this.contr = contr;
+        this.logger = new LogHandler();
     }
 
     /**
@@ -33,9 +40,15 @@ public class View {
      * values are printed to System.out.
      */
     public void sampleExecution() {
-
-        CustomerDTO customer = contr.findCustomer("0701234567");
-        System.out.println("Found customer: " + customer);
+        try {
+            CustomerDTO customer = contr.findCustomer("0701234567");
+            System.out.println("Found customer: " + customer);
+        } catch (CustomerPhoneNumberNotFoundException exc) {
+                errorMsgHandler.showErrorMsg("No customer found with that phone number.");
+        } catch (Exception exc) {
+                errorMsgHandler.showErrorMsg("Something went wrong, please try again.");
+                logger.logException(exc);
+        }
 
         Bike bike = new Bike("Trek", "FX3", "SN123456");
         RepairOrderDTO order = contr.createRepairOrder(

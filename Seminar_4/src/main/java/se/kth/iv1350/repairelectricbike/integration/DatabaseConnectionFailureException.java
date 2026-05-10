@@ -4,14 +4,15 @@ package se.kth.iv1350.repairelectricbike.integration;
  * Exception when there is a database connection failure. 
  */
 
-public class DatabaseConnectionFailureException extends Exception {
+public class DatabaseConnectionFailureException extends RuntimeException {
 
     /**
-     * Creates a new exception that the database connection failed.
+     * Creates a new instance with a message describing what went wrong.
      * 
-     * @param phoneNumber The phone number linked to the failed connection.
+     * @param msg   A message describing the failure.
+     * @param cause The original exception that caused this failure.
      */
-    public DatabaseConnectionFailureException(String phoneNumber) {
-        super("Failed to connect to database when trying to find customer with phone number: " + phoneNumber);
+    public DatabaseConnectionFailureException(String msg, Exception cause) {
+        super(msg, cause);
     }
 }
