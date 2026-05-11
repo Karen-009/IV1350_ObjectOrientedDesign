@@ -50,14 +50,13 @@ public class CustomerRegistryTest {
 
     @Test
     public void testDatabaseFailureThrowsException() {
-        String hardcodedFailurePhone = "0000000001";
+        String hardcodedFailurePhone = "0700000000";
 
         try {
             registry.findCustomer(hardcodedFailurePhone);
             fail("Expected DatabaseConnectionFailureException was not thrown.");
         } catch (DatabaseConnectionFailureException exc) {
-            assertTrue(
-                exc.getMessage().contains("database"),
+            assertTrue(exc.getMessage().contains("database"),
                 "Exception message should mention the database failure.");
         } catch (CustomerPhoneNumberNotFoundException exc) {
             fail("Wrong exception type thrown - expected DatabaseConnectionFailureException.");
