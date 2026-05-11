@@ -17,6 +17,7 @@ import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.integration.CustomerDTO;
 import se.kth.iv1350.repairelectricbike.integration.CustomerPhoneNumberNotFoundException;
+import se.kth.iv1350.repairelectricbike.integration.DatabaseConnectionFailureException;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
 
@@ -80,6 +81,21 @@ public class ControllerTest {
         } catch (CustomerPhoneNumberNotFoundException exc) {
             assertTrue(exc.getMessage().contains(nonExistingPhone),
             "Exception message should contain the searched phone number.");
+        }
+    }
+
+    @Test
+    public void testFindCustomerDatabaseFailure() {
+        String hardcodedFailurePhone = "0700000000";
+
+        try {
+            controller.findCustomer(hardcodedFailurePhone);
+            fail("Expected DatabaseConnectionFailureException was not thrown.");
+        } catch (DatabaseConnectionFailureException exc) {
+            assertTrue(exc.getMessage().contains("database"),
+                "Exception message should mention the database failure.");
+        } catch (CustomerPhoneNumberNotFoundException exc) {
+            fail("Wrong exception type - expected DatabaseConnectionFailureException.");
         }
     }
 
