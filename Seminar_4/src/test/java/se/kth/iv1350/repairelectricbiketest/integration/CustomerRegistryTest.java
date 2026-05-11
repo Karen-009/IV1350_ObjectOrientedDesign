@@ -54,13 +54,13 @@ public class CustomerRegistryTest {
 
         try {
             registry.findCustomer(hardcodedFailurePhone);
-            fail("Expected CustomerRegistryException was not thrown.");
+            fail("Expected DatabaseConnectionFailureException was not thrown.");
         } catch (DatabaseConnectionFailureException exc) {
             assertTrue(
                 exc.getMessage().contains("database"),
                 "Exception message should mention the database failure.");
         } catch (CustomerPhoneNumberNotFoundException exc) {
-            fail("Wrong exception type thrown - expected CustomerRegistryException.");
+            fail("Wrong exception type thrown - expected DatabaseConnectionFailureException.");
         }
     }
 }

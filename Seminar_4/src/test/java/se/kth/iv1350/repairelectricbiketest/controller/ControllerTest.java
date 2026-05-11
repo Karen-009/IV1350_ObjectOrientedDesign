@@ -71,9 +71,16 @@ public class ControllerTest {
     }
 
     @Test
-    public void testFindCustomerNotFound() throws CustomerPhoneNumberNotFoundException {
-        CustomerDTO result = controller.findCustomer("999-999-999");
-        assertNull(result, "Should return null when customer is not found");
+    public void testFindCustomerNotFound() {
+        String nonExistingPhone = "999999999";
+
+        try {
+            controller.findCustomer(nonExistingPhone);
+            fail("Expected CustomerPhoneNumberNotFoundException was not thrown.");
+        } catch (CustomerPhoneNumberNotFoundException exc) {
+            assertTrue(exc.getMessage().contains(nonExistingPhone),
+            "Exception message should contain the searched phone number.");
+        }
     }
 
     @Test
