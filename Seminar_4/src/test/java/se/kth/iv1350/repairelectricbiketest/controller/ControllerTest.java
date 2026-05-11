@@ -16,6 +16,7 @@ import se.kth.iv1350.repairelectricbike.controller.Controller;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.integration.CustomerDTO;
+import se.kth.iv1350.repairelectricbike.integration.CustomerPhoneNumberNotFoundException;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
 
@@ -63,14 +64,14 @@ public class ControllerTest {
     }
 
     @Test
-    public void testFindCustomerFound() {
+    public void testFindCustomerFound() throws CustomerPhoneNumberNotFoundException {
         String phoneNumber = "0701234567";
         CustomerDTO result = controller.findCustomer(phoneNumber);
         assertNotNull(result, "Should find a customer that exists in the registry.");
     }
 
     @Test
-    public void testFindCustomerNotFound() {
+    public void testFindCustomerNotFound() throws CustomerPhoneNumberNotFoundException {
         CustomerDTO result = controller.findCustomer("999-999-999");
         assertNull(result, "Should return null when customer is not found");
     }
