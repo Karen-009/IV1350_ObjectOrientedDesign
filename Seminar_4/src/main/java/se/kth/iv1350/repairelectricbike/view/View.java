@@ -13,6 +13,7 @@ import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
 import se.kth.iv1350.repairelectricbike.util.LogHandler;
+import se.kth.iv1350.repairelectricbike.util.RepairOrderLogger;
 
 /**
  * This program has no real user interface. Instead, this
@@ -32,6 +33,8 @@ public class View {
     public View(Controller contr) throws IOException {
         this.contr = contr;
         this.logger = new LogHandler();
+        contr.addRepairOrderObserver(new RepairOrderView());
+        contr.addRepairOrderObserver(new RepairOrderLogger());
     }
 
     /**

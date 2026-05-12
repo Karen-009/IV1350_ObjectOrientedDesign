@@ -12,5 +12,5 @@ public interface RepairOrderObserver {
      * 
      * @param repairOrder the updated repair order
      */
-    void newRepairOrder(RepairOrderDTO repairOrder);
+    void repairOrderUpdated(RepairOrderDTO repairOrder);
 }

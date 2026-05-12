@@ -1,8 +1,10 @@
 package se.kth.iv1350.repairelectricbike.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.repairelectricbike.model.RepairOrder;
+import se.kth.iv1350.repairelectricbike.model.RepairOrderObserver;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.Bike;
@@ -24,6 +26,8 @@ public class Controller {
     private RepairOrderRegistry repairOrderRegistry;
     private Printer printer;
     private RepairOrder repairOrder;
+    private List<RepairOrderObserver> repairOrderObservers = new ArrayList<>();
+
 
     /**
      * Creates a new instance.
@@ -48,6 +52,7 @@ public class Controller {
      */
     public RepairOrderDTO createRepairOrder(String problemDesc, String customerPhone, Bike bikeSerialNo) {
         repairOrder = new RepairOrder(problemDesc, customerPhone, bikeSerialNo);
+        repairOrder.addRepairOrderObservers(repairOrderObservers);
         RepairOrderDTO dto = repairOrder.getRepairOrderDTO();
         repairOrderRegistry.saveRepairOrder(repairOrder);
         return dto;
@@ -91,6 +96,7 @@ public class Controller {
      */
     public void addDiagnosticResult(String repairOrderId, DiagnosticTaskDTO diagTaskResult) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderId);
+        repairOrder.addRepairOrderObservers(repairOrderObservers);
         repairOrder.addDiagnosticResult(diagTaskResult);
         repairOrderRegistry.updateRepairOrder(repairOrder.getRepairOrderDTO());
     }
@@ -103,6 +109,7 @@ public class Controller {
      */
     public void addRepairTask(String repairOrderId, RepairTaskDTO repairTask) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderId);
+        repairOrder.addRepairOrderObservers(repairOrderObservers);
         repairOrder.addRepairTask(repairTask);
         repairOrderRegistry.updateRepairOrder(repairOrder.getRepairOrderDTO());
     }
@@ -115,6 +122,7 @@ public class Controller {
 
     public void acceptRepairOrder(String repairOrderID) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
+        repairOrder.addRepairOrderObservers(repairOrderObservers);
         repairOrder.acceptRepairOrder();
         repairOrderRegistry.updateRepairOrder(repairOrder.getRepairOrderDTO());
         printer.printRepairOrder(repairOrder.getRepairOrderDTO());
@@ -128,7 +136,18 @@ public class Controller {
 
     public void rejectRepairOrder(String repairOrderID) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
+        repairOrder.addRepairOrderObservers(repairOrderObservers);
         repairOrder.rejectRepairOrder();
         repairOrderRegistry.updateRepairOrder(repairOrder.getRepairOrderDTO());
+    }
+
+    /**
+     * Adds an observer that will be notified when a repair order is updated.
+     * There will be notifications only for repair orders that are updated after this method is called.
+     * 
+     * @param observer  The observer to notify.
+     */
+    public void addRepairOrderObserver(RepairOrderObserver observer) {
+        repairOrderObservers.add(observer);
     }
 }

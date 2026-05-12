@@ -22,6 +22,7 @@ public class RepairOrder {
 
     private List<DiagnosticTaskDTO> diagnosticResults = new ArrayList<>();
     private List<RepairTaskDTO> repairTasks = new ArrayList<>();
+    private List<RepairOrderObserver> repairOrderObservers = new ArrayList<>();
 
     /**
     * Creates a new instance representing a new repair order.
@@ -81,6 +82,7 @@ public class RepairOrder {
      */
     public void acceptRepairOrder() {
         this.state = RepairOrderState.ACCEPTED;
+        notifyObservers();
     }
     
     /**
@@ -88,6 +90,7 @@ public class RepairOrder {
      */
     public void rejectRepairOrder() {
         this.state = RepairOrderState.REJECTED;
+        notifyObservers();
     }
 
     /**
@@ -98,6 +101,7 @@ public class RepairOrder {
     public void addDiagnosticResult(DiagnosticTaskDTO diagTaskResult) {
         diagnosticResults.add(diagTaskResult);
         this.state = RepairOrderState.READY_FOR_APPROVAL;
+        notifyObservers();
     }
 
     /**
@@ -107,6 +111,7 @@ public class RepairOrder {
      */
     public void addRepairTask(RepairTaskDTO repairTask) {
         repairTasks.add(repairTask);
+        notifyObservers();
     }
 
     /**
@@ -130,5 +135,29 @@ public class RepairOrder {
                 this.customersProblemDescription,
                 this.estimatedCompletionDate,
                 this.state);
+    }
+
+    /**
+     * Registers an observer that will be notified whenever this repair order is updated.
+     *
+     * @param observer The observer to register.
+     */
+    public void addRepairOrderObserver(RepairOrderObserver observer) {
+        repairOrderObservers.add(observer);
+    }
+
+    /**
+     * Registers a list of observers that will be notified whenever this repair order is updated.
+     *
+     * @param observers The list of observers to register.
+     */
+    public void addRepairOrderObservers(List<RepairOrderObserver> observers) {
+        repairOrderObservers.addAll(observers);
+    }
+
+    private void notifyObservers() {
+        for (RepairOrderObserver observer : repairOrderObservers) {
+            observer.repairOrderUpdated(getRepairOrderDTO());
+        }
     }
 }
