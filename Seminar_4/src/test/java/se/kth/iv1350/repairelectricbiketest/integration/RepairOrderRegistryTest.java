@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
+import se.kth.iv1350.repairelectricbike.integration.DatabaseConnectionFailureException;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderState;
 import se.kth.iv1350.repairelectricbike.model.RepairOrder;
@@ -100,5 +101,26 @@ public class RepairOrderRegistryTest {
         assertEquals(RepairOrderState.NEWLY_CREATED,
                 allOrders.get(0).getState(),
                 "Existing order should not be modified.");
+    }
+
+    @Test
+    public void testFindRepairOrderByIdDatabaseFailure() {
+        String hardcodedFailureId = "000-failure-000";
+
+        try {
+            registry.findRepairOrderById(hardcodedFailureId);
+            fail("Expected DatabaseConnectionFailureEception was not thrown.");
+        } catch (DatabaseConnectionFailureException exc) {
+            assertTrue(
+                exc.getMessage().contains("database"),
+                "Exception message should mention the database failure.");
+        }
+    }
+
+    @Test
+    public void testFindRepairOrderByIdNonExisting() 
+            throws DatabaseConnectionFailureException {
+        RepairOrder found = registry.findRepairOrderById("non-existent-id");
+        assertNull(found, "Should return null for an ID that does not exist.");
     }
 }

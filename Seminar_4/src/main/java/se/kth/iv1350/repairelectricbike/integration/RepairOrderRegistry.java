@@ -14,6 +14,7 @@ public class RepairOrderRegistry {
     /**
      * Internal list of entities
      */
+    private static final String HARDCODED_FAILURE_ID = "000-failure-000";
     private final List<RepairOrder> repairOrders = new ArrayList<>();
 
     /**
@@ -46,6 +47,12 @@ public class RepairOrderRegistry {
      *         or null if no such order exists.
      */
     public RepairOrder findRepairOrderById(String repairOrderId) {
+
+        if (repairOrderId.equals(HARDCODED_FAILURE_ID)) {
+            throw new DatabaseConnectionFailureException("Failed to contact the repair order database.",
+                new Exception("Simulated database connection failure"));
+        }
+        
         for (RepairOrder order : repairOrders) {
             if (order.getId().equals(repairOrderId)) {
                 return order;
