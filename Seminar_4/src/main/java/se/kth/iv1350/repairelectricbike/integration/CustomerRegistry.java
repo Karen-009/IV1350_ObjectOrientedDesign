@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public class CustomerRegistry {
-
+    private static final CustomerRegistry INSTANCE = new CustomerRegistry();
     private static final String DATABASE_CONNECTION_FAILURE_PHONE_NUMBER = "0700000000";
     private List<CustomerDTO> customers = new ArrayList<>();
 
@@ -18,8 +18,19 @@ public class CustomerRegistry {
      * Creates a new instance and populates it with
      * hardcoded customer data for testing purposes.
      */
-    public CustomerRegistry() {
+    private CustomerRegistry() {
         addCustomers();
+    }
+
+    /**
+     * Returns the single shared instance of the CustomerRegistry.
+     * Implements the Singleton design pattern by providing global
+     * access to the registry instance.
+     *
+     * @return the singleton instance of CustomerRegistry
+     */
+    public static CustomerRegistry getInstance() {
+        return INSTANCE;
     }
 
     /**
@@ -27,14 +38,16 @@ public class CustomerRegistry {
      * 
      * @param phoneNumber The phone number used to identify the customer.
      * @return A DTO containing the customer information.
-     * @throws CustomerPhoneNumberNotFoundException If no customer is found with the specified phone number.
-     * @throws DatabaseConnectionFailureException If there is a failure in connection to the database.
+     * @throws CustomerPhoneNumberNotFoundException If no customer is found with the
+     *                                              specified phone number.
+     * @throws DatabaseConnectionFailureException   If there is a failure in
+     *                                              connection to the database.
      */
     public CustomerDTO findCustomer(String phoneNumber) throws CustomerPhoneNumberNotFoundException {
 
         if (DATABASE_CONNECTION_FAILURE_PHONE_NUMBER.equals(phoneNumber)) {
-                throw new DatabaseConnectionFailureException("Failed to contact the customer database.", 
-                new Exception("Database connection failure"));
+            throw new DatabaseConnectionFailureException("Failed to contact the customer database.",
+                    new Exception("Database connection failure"));
         }
 
         for (CustomerDTO customer : customers) {
@@ -42,7 +55,7 @@ public class CustomerRegistry {
                 return customer;
             }
         }
-        
+
         throw new CustomerPhoneNumberNotFoundException(phoneNumber);
     }
 

@@ -159,4 +159,31 @@ public class ControllerTest {
         RepairOrderDTO result = controller.findRepairOrder("notExisting");
         assertNull(result);
     }
+
+    @Test
+    public void testAcceptRepairOrderAppliesLoyaltyDiscountOnThirdOrder() {
+        String phoneNumber = "0701234567";
+        controller.createRepairOrder("Order 1", phoneNumber, new Bike("GIANT", "SNS", "11"));
+        controller.createRepairOrder("Order 2", phoneNumber, new Bike("GIANT", "SNS", "12"));
+        RepairOrderDTO thirdOrder = controller.createRepairOrder("Order 3", phoneNumber, new Bike("GIANT", "SNS", "13"));
+
+        controller.addDiagnosticResult(thirdOrder.getId(),
+                new DiagnosticTaskDTO("Battery", "Battery check", new Amount(200), "Worn"));
+        controller.addRepairTask(thirdOrder.getId(),
+                new RepairTaskDTO("Pads", "Replace pads", new Amount(500), RepairTaskState.INCOMPLETE));
+
+        controller.acceptRepairOrder(thirdOrder.getId());
+
+        RepairOrderDTO updatedThirdOrder = controller.findAllRepairOrders().stream()
+                .filter(order -> order.getId().equals(thirdOrder.getId()))
+                .findFirst()
+                .orElse(null);
+
+        assertNotNull(updatedThirdOrder, "The third order should still be stored after acceptance.");
+        assertEquals(700, updatedThirdOrder.getTotalCost().getAmount(), "The total cost should include all tasks.");
+        assertEquals(630, updatedThirdOrder.getDiscountedTotal().getAmount(),
+                "The third order should receive the loyalty discount.");
+        assertEquals("10% loyalty discount", updatedThirdOrder.getDiscountDescription(),
+                "The DTO should describe the applied strategy.");
+    }
 }

@@ -75,6 +75,22 @@ public class RepairOrderRegistry {
     }
 
     /**
+     * Counts how many repair orders are registered for the specified customer.
+     *
+     * @param phoneNumber The phone number identifying the customer.
+     * @return The number of repair orders stored for that customer.
+     */
+    public int countOrdersForCustomer(String phoneNumber) {
+        int count = 0;
+        for (RepairOrder order : repairOrders) {
+            if (order.getPhoneNumber().equals(phoneNumber)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
      * Updates an existing repair order in the registry.
      * 
      * @param updatedRepairOrder The DTO containing the updated information.

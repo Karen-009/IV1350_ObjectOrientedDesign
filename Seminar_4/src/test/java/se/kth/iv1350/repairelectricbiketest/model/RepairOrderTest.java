@@ -10,6 +10,8 @@ import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 import se.kth.iv1350.repairelectricbike.model.Amount;
 import se.kth.iv1350.repairelectricbike.model.Bike;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
+import se.kth.iv1350.repairelectricbike.model.LoyaltyDiscountStrategy;
+import se.kth.iv1350.repairelectricbike.model.NoDiscountStrategy;
 import se.kth.iv1350.repairelectricbike.model.RepairOrder;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskState;
@@ -81,5 +83,37 @@ public class RepairOrderTest {
 
         assertEquals(RepairOrderState.ACCEPTED, repairOrder.getRepairOrderDTO().getState(),
                 "State should be updated from the DTO correctly.");
+    }
+
+    @Test
+    public void testCalculateTotalCost() {
+        repairOrder.addDiagnosticResult(new DiagnosticTaskDTO("Battery", "Battery check", new Amount(200), "Worn"));
+        repairOrder.addRepairTask(new RepairTaskDTO("Pads", "Replace pads", new Amount(500), RepairTaskState.INCOMPLETE));
+
+        Amount total = repairOrder.calculateTotalCost();
+
+        assertEquals(700, total.getAmount(), "Total cost should sum all diagnostic and repair tasks.");
+    }
+
+    @Test
+    public void testCalculateDiscountedTotalWithLoyaltyDiscount() {
+        repairOrder.addDiagnosticResult(new DiagnosticTaskDTO("Battery", "Battery check", new Amount(200), "Worn"));
+        repairOrder.addRepairTask(new RepairTaskDTO("Pads", "Replace pads", new Amount(500), RepairTaskState.INCOMPLETE));
+
+        Amount discountedTotal = repairOrder.calculateDiscountedTotal(new LoyaltyDiscountStrategy());
+
+        assertEquals(630, discountedTotal.getAmount(), "A 10% loyalty discount should be applied.");
+        assertEquals("10% loyalty discount", repairOrder.getRepairOrderDTO().getDiscountDescription(),
+                "The used discount strategy should be visible in the DTO.");
+    }
+
+    @Test
+    public void testCalculateDiscountedTotalWithNoDiscount() {
+        repairOrder.addRepairTask(new RepairTaskDTO("Chain", "Adjust chain tension", new Amount(300),
+                RepairTaskState.INCOMPLETE));
+
+        Amount discountedTotal = repairOrder.calculateDiscountedTotal(new NoDiscountStrategy());
+
+        assertEquals(300, discountedTotal.getAmount(), "NoDiscountStrategy should not change the total.");
     }
 }

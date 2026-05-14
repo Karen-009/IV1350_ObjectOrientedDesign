@@ -27,6 +27,8 @@ public class RegistryCreatorTest {
     public void testGetCustomerRegistry() {
         CustomerRegistry result = creator.getCustomerRegistry();
         assertNotNull(result, "CustomerRegistry should be instantiated by RegistryCreator.");
+        assertSame(CustomerRegistry.getInstance(), creator.getCustomerRegistry());
+
     }
 
     @Test

@@ -15,7 +15,7 @@ public class CustomerRegistryTest {
 
     @BeforeEach
     public void setUp() {
-        registry = new CustomerRegistry();
+        registry = CustomerRegistry.getInstance();
     }
 
     @AfterEach
@@ -42,9 +42,10 @@ public class CustomerRegistryTest {
             registry.findCustomer(nonExistingPhone);
             fail("A customer with a non existing phone number was found.");
         } catch (CustomerPhoneNumberNotFoundException exc) {
-            assertTrue(exc.getMessage().contains(nonExistingPhone), 
-            "Exception message should contain the phone number that was searched.");
-            assertEquals(nonExistingPhone, exc.getPhoneNumber(), "Exception should store the number that was not found.");
+            assertTrue(exc.getMessage().contains(nonExistingPhone),
+                    "Exception message should contain the phone number that was searched.");
+            assertEquals(nonExistingPhone, exc.getPhoneNumber(),
+                    "Exception should store the number that was not found.");
         }
     }
 
@@ -57,9 +58,15 @@ public class CustomerRegistryTest {
             fail("Expected DatabaseConnectionFailureException was not thrown.");
         } catch (DatabaseConnectionFailureException exc) {
             assertTrue(exc.getMessage().contains("database"),
-                "Exception message should mention the database failure.");
+                    "Exception message should mention the database failure.");
         } catch (CustomerPhoneNumberNotFoundException exc) {
             fail("Wrong exception type thrown - expected DatabaseConnectionFailureException.");
         }
+    }
+
+    @Test
+    public void testSingletonReturnsSameInstance() {
+        CustomerRegistry anotherReference = CustomerRegistry.getInstance();
+        assertSame(registry, anotherReference, "CustomerRegistry should return the same singleton instance.");
     }
 }

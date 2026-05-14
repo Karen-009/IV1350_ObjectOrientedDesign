@@ -13,5 +13,8 @@ public class Printer {
      */
     public void printRepairOrder(RepairOrderDTO repairOrder) {
         System.out.println("Repair order: " + repairOrder.getId());
+        System.out.println("Total cost: " + repairOrder.getTotalCost());
+        System.out.println("Discount: " + repairOrder.getDiscountDescription());
+        System.out.println("Discounted total: " + repairOrder.getDiscountedTotal());
     }
 }

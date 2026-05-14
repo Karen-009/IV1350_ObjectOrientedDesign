@@ -8,6 +8,9 @@ import se.kth.iv1350.repairelectricbike.model.RepairOrderObserver;
 import se.kth.iv1350.repairelectricbike.model.RepairTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.DiagnosticTaskDTO;
 import se.kth.iv1350.repairelectricbike.model.Bike;
+import se.kth.iv1350.repairelectricbike.model.DiscountStrategy;
+import se.kth.iv1350.repairelectricbike.model.LoyaltyDiscountStrategy;
+import se.kth.iv1350.repairelectricbike.model.NoDiscountStrategy;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 import se.kth.iv1350.repairelectricbike.integration.CustomerRegistry;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderRegistry;
@@ -123,6 +126,8 @@ public class Controller {
     public void acceptRepairOrder(String repairOrderID) {
         repairOrder = repairOrderRegistry.findRepairOrderById(repairOrderID);
         repairOrder.addRepairOrderObservers(repairOrderObservers);
+        DiscountStrategy discountStrategy = selectDiscountStrategy(repairOrder.getPhoneNumber());
+        repairOrder.calculateDiscountedTotal(discountStrategy);
         repairOrder.acceptRepairOrder();
         repairOrderRegistry.updateRepairOrder(repairOrder.getRepairOrderDTO());
         printer.printRepairOrder(repairOrder.getRepairOrderDTO());
@@ -149,5 +154,13 @@ public class Controller {
      */
     public void addRepairOrderObserver(RepairOrderObserver observer) {
         repairOrderObservers.add(observer);
+    }
+
+    private DiscountStrategy selectDiscountStrategy(String phoneNumber) {
+        int numberOfOrders = repairOrderRegistry.countOrdersForCustomer(phoneNumber);
+        if (numberOfOrders % 3 == 0) {
+            return new LoyaltyDiscountStrategy();
+        }
+        return new NoDiscountStrategy();
     }
 }
