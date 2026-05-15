@@ -19,7 +19,7 @@ public final class CustomerDTO {
      * @param email         The customer email address.
      * @param bikeBrand     Description of the customers bikebrand.
      * @param bikeModel     Description of the customers bike model.
-     * @param bikeSeriallNo The customer bikes serial number.
+     * @param bikeSerialNo The customer bikes serial number.
      * @param phoneNumber  The customer's phone number.
      */
 

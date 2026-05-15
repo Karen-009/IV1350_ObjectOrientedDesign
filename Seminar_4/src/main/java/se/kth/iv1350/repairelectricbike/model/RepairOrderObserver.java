@@ -3,7 +3,7 @@ package se.kth.iv1350.repairelectricbike.model;
 import se.kth.iv1350.repairelectricbike.integration.RepairOrderDTO;
 
 /**
- * This interface recieves notifications about updated repair orders
+ * This interface receives notifications about updated repair orders
  */
 
 public interface RepairOrderObserver {

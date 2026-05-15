@@ -1,7 +1,7 @@
 package se.kth.iv1350.repairelectricbike.model;
 
 /**
- * Applies a loyalty discount to the repair order total.
+ * Applies a 10% loyalty discount to the repair order total.
  */
 public class LoyaltyDiscountStrategy implements DiscountStrategy {
     private static final double DISCOUNT_RATE = 0.10;

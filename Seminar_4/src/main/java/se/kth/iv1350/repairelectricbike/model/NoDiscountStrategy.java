@@ -7,7 +7,7 @@ public class NoDiscountStrategy implements DiscountStrategy {
     /**
      * Returns the original amount unchanged.
      *
-     * @param originalAmount The total cost before discount.
+     * @param originalAmount The original total cost.
      * @return The unchanged total cost.
      */
     @Override
