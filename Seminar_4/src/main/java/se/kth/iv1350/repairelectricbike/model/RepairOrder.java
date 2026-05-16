@@ -186,7 +186,9 @@ public class RepairOrder {
      * @param observer The observer to register.
      */
     public void addRepairOrderObserver(RepairOrderObserver observer) {
-        repairOrderObservers.add(observer);
+        if (!repairOrderObservers.contains(observer)) {
+            repairOrderObservers.add(observer);
+        }
     }
 
     /**
@@ -195,8 +197,10 @@ public class RepairOrder {
      *
      * @param observers The list of observers to register.
      */
-    public void addRepairOrderObservers(List<RepairOrderObserver> observers) {
-        repairOrderObservers.addAll(observers);
+        public void addRepairOrderObservers(List<RepairOrderObserver> observers) {
+        for (RepairOrderObserver observer : observers) {
+            addRepairOrderObserver(observer);
+        }
     }
 
     private void notifyObservers() {

@@ -158,7 +158,7 @@ public class Controller {
 
     private DiscountStrategy selectDiscountStrategy(String phoneNumber) {
         int numberOfOrders = repairOrderRegistry.countOrdersForCustomer(phoneNumber);
-        if (numberOfOrders % 3 == 0) {
+        if (numberOfOrders > 0 && numberOfOrders % 3 == 0) {
             return new LoyaltyDiscountStrategy();
         }
         return new NoDiscountStrategy();
